@@ -7,6 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 // Redux
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import logger from "redux-logger";
 import rootReducer from "./reducers";
@@ -14,7 +15,7 @@ import rootReducer from "./reducers";
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(logger),
+    applyMiddleware(logger, thunk),
     composeWithDevTools()
   )
 );
